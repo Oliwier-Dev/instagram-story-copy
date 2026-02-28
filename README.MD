@@ -32,7 +32,7 @@ A lightweight Instagram-style story viewer built with plain HTML, CSS, and JavaS
 
 ## How To Run
 
-Live demo: 
+Live demo: https://oliwier-dev.github.io/instagram-story-copy/
 
 ## Controls
 
@@ -88,3 +88,7 @@ Live demo:
 - Upload not working:
 - Ensure a file is selected before submitting.
 - Use a supported image format (`accept=\"image/*\"`).
+
+
+
+https://roadmap.sh/projects/stories-feature
