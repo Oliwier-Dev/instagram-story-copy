@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram 24hr story feature</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main id="main">
+        <section id="storiesContainer" class="stories-panel">
+            <div class="stories-panel__header">
+                <h1>Stories</h1>
+                <p>Share a quick 24-hour post</p>
+            </div>
+
+            <div class="stories-strip">
+                <button id="addStory" type="button" class="add-story-btn" aria-label="Add new story">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14" />
+                        <path d="M5 12h14" />
+                    </svg>
+                </button>
+                <div id="stories" class="stories-list" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section id="story" class="story-view hidden">
+            <div id="upperContainer" class="story-topbar">
+                <div id="progressBarContainer" class="progress-shell">
+                    <div id="progressBar" class="progress-fill"></div>
+                </div>
+                <p id="storyTimer" class="story-timer">3.0s</p>
+                <p id="activeStoryLabel" class="story-label">Story preview</p>
+                <button id="closeStory" type="button" class="close-story-btn" aria-label="Close story view">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6L6 18" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="lowerContainer" class="story-stage">
+                <button id="backwardsBtn" type="button" class="story-nav story-nav--left" aria-label="Previous story">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+
+                <div id="imgContainer" class="story-frame"></div>
+
+                <button id="forwardBtn" type="button" class="story-nav story-nav--right" aria-label="Next story">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <div id="popUp" class="modal hidden">
+            <form id="form" autocomplete="off" class="modal-card">
+                <h2>Add New Story</h2>
+
+                <label for="userTitle">Story title</label>
+                <input type="text" id="userTitle" placeholder="My weekend trip">
+
+                <label for="photoUpload" class="upload-btn">Upload photo</label>
+                <input type="file" id="photoUpload" accept="image/*" class="hidden-input">
+                <p id="photoFeedback"></p>
+
+                <button type="submit" id="submitBtn">Add Story</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

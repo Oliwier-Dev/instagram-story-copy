@@ -1,0 +1,354 @@
+﻿:root {
+    --bg: #ffffff;
+    --panel: #ffffff;
+    --line: #d6d6d6;
+    --line-strong: #8a8a8a;
+    --text: #101010;
+    --muted: #5f5f5f;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+}
+
+#main {
+    width: min(980px, 94vw);
+    margin: 0 auto;
+    padding: 1.2rem 0 2rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.stories-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+}
+
+.stories-panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+}
+
+.stories-panel__header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.stories-panel__header p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.stories-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.add-story-btn {
+    width: 60px;
+    height: 60px;
+    flex: 0 0 auto;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #111111;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.add-story-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.stories-list {
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding: 0.2rem 0;
+}
+
+.stories-list::-webkit-scrollbar {
+    height: 7px;
+}
+
+.stories-list::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 999px;
+}
+
+.story-thumb {
+    width: 60px;
+    height: 60px;
+    flex: 0 0 auto;
+    border: 2px solid #8f8f8f;
+    border-radius: 999px;
+    overflow: hidden;
+    padding: 0;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.story-thumb__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-view {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 0.9rem;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.story-topbar {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas:
+        "progress timer close"
+        "label label label";
+    gap: 0.5rem 0.7rem;
+    align-items: center;
+}
+
+#progressBarContainer {
+    grid-area: progress;
+}
+
+.progress-shell {
+    width: 100%;
+    height: 7px;
+    border-radius: 999px;
+    background: #e7e7e7;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 100%;
+    height: 100%;
+    background: #111111;
+    border-radius: inherit;
+    transform-origin: left center;
+    transform: scaleX(0);
+    will-change: transform;
+}
+
+.story-timer {
+    grid-area: timer;
+    margin: 0;
+    min-width: 3ch;
+    text-align: right;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.story-label {
+    grid-area: label;
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.close-story-btn {
+    grid-area: close;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #151515;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.close-story-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.story-stage {
+    position: relative;
+    min-height: 490px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.story-frame {
+    width: min(420px, 100%);
+}
+
+.story-image {
+    width: 100%;
+    max-height: 72vh;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #cecece;
+}
+
+.story-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #111111;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.story-nav svg {
+    width: 20px;
+    height: 20px;
+}
+
+.story-nav--left {
+    left: clamp(0.2rem, 2.3vw, 0.9rem);
+}
+
+.story-nav--right {
+    right: clamp(0.2rem, 2.3vw, 0.9rem);
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    z-index: 50;
+}
+
+.modal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.modal-card {
+    position: relative;
+    z-index: 1;
+    width: min(410px, 100%);
+    display: grid;
+    gap: 0.7rem;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+}
+
+.modal-card h2 {
+    margin: 0 0 0.2rem;
+    font-size: 1.05rem;
+}
+
+.modal-card label {
+    font-size: 0.9rem;
+    color: #333333;
+}
+
+#userTitle {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid #b7b7b7;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #111111;
+    font: inherit;
+}
+
+#userTitle:focus {
+    outline: 1px solid #222222;
+}
+
+.upload-btn,
+#submitBtn {
+    width: 100%;
+    border: 1px solid #8e8e8e;
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+.upload-btn {
+    background: #ffffff;
+    color: #222222;
+}
+
+#submitBtn {
+    background: #111111;
+    color: #ffffff;
+}
+
+.hidden-input {
+    display: none;
+}
+
+#photoFeedback {
+    margin: 0;
+    min-height: 1.2em;
+    font-size: 0.85rem;
+    color: #444444;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 760px) {
+    .story-topbar {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "progress timer"
+            "label label"
+            "close close";
+    }
+
+    .close-story-btn {
+        justify-self: end;
+    }
+
+    .story-stage {
+        min-height: 430px;
+    }
+
+    .story-image {
+        max-height: 65vh;
+    }
+}
